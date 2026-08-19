@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  background: #08090a;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  @apply bg-ink-950 text-paper-100 font-body antialiased;
+  font-feature-settings: 'ss01' on;
+}
+
+::selection {
+  background: rgba(95, 227, 164, 0.28);
+  color: #f3f4f1;
+}
+
+/* Focus states — visible, high-contrast, never suppressed */
+:focus-visible {
+  outline: 2px solid rgba(95, 227, 164, 0.9);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.eyebrow {
+  @apply font-mono text-[11px] uppercase tracking-widest2 text-mint-400;
+}
+
+.hairline {
+  @apply border-t border-ink-600;
+}
+
+.container-edge {
+  @apply mx-auto w-full max-w-[1400px] px-6 sm:px-10 lg:px-16;
+}
+
+/* Custom underline-draw link style used across nav + footer */
+.link-draw {
+  position: relative;
+  display: inline-block;
+}
+.link-draw::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-draw:hover::after,
+.link-draw:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.mask-fade-bottom {
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
